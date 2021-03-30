@@ -1,0 +1,14 @@
+<section class="bg-dark-blue">
+    <div class="container">
+        {% for row in section.two_column_rows %}
+            <div class="lg:flex items-center even:flex-row-reverse">
+                <div class="flex-1 p-4 reveal--fade-in">
+                    <img class="h-full w-full object-cover" src="{{ Image(row.image).src }}"  alt="{{ row.image.alt }}" srcset="{{ row.image.srcset }}" sizes="{{ row.image.img_sizes }}" />
+                </div>
+                <div class="flex-1 p-4 text-white reveal--fade-in">
+                    {{ row.text }}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>

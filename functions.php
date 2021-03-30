@@ -84,6 +84,8 @@ class StarterSite extends Timber\Site {
 		$context['foo']   = 'bar';
 		$context['stuff'] = 'I am a value set in your functions.php file';
 		$context['notes'] = 'These values are available everytime you call Timber::context();';
+		$context['primary_menu'] = new \Timber\Menu( 'primary-menu' );
+		$context['footer_menu'] = new \Timber\Menu( 'footer-menu' );
 		$context['menu']  = new Timber\Menu();
 		$context['site']  = $this;
 		return $context;
@@ -165,3 +167,35 @@ class StarterSite extends Timber\Site {
 }
 
 new StarterSite();
+
+
+if( function_exists('acf_add_options_page') ) {
+	
+	acf_add_options_page(array(
+		'page_title' 	=> 'Theme General Settings',
+		'menu_title'	=> 'Theme Settings',
+		'menu_slug' 	=> 'theme-general-settings',
+		'capability'	=> 'edit_posts',
+		'redirect'		=> false
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Header Settings',
+		'menu_title'	=> 'Header',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	
+	acf_add_options_sub_page(array(
+		'page_title' 	=> 'Theme Footer Settings',
+		'menu_title'	=> 'Footer',
+		'parent_slug'	=> 'theme-general-settings',
+	));
+	
+}
+
+add_filter( 'timber_context', 'mytheme_timber_context'  );
+
+function mytheme_timber_context( $context ) {
+    $context['options'] = get_fields('option');
+    return $context;
+}

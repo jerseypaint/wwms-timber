@@ -1,0 +1,157 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+h1, .h1, h2, .h2, h3, .h3, h5, .h5 {
+    font-family: 'Nunito Sans', sans-serif;
+    @apply font-semibold mb-4;
+}
+
+body, p, h4, .h4 {
+    font-family: 'Roboto', sans-serif;
+}
+
+h1, .h1 {
+    @apply text-4xl xl:text-6xl;
+}
+
+h2, .h2 {
+    @apply uppercase text-3xl xl:text-4xl;
+}
+
+h3, .h3 {
+    @apply text-2xl;
+}
+
+h4, .h4 {
+    @apply text-base lg:text-lg font-bold uppercase;
+}
+
+body, p {
+    @apply  text-base lg:text-lg;
+}
+
+p {
+   @apply mb-4;
+}
+
+ul {
+    @apply ml-4;
+    list-style-type: '- ';
+}
+
+li {
+    @apply mb-2;
+}
+
+section, .section {
+    @apply py-12 xl:py-24;
+}
+
+.container {
+    @apply mx-auto px-4 lg:px-0;
+}
+
+a {
+    @apply underline hover:text-brand-blue transition-colors;
+}
+
+nav a {
+    @apply no-underline;
+}
+
+nav .current_page_item > a {
+    @apply text-brand-blue;
+}
+
+nav ul {
+    @apply list-none ml-0;
+}
+
+.button {
+    @apply inline-block my-4 py-2 px-6 bg-brand-blue text-white font-bold uppercase no-underline hover:bg-dark-blue hover:text-white transition-colors;
+}
+
+.button--dark {
+    @apply bg-dark-blue;
+}
+
+.bg-dark-blue h1, .bg-dark-blue .h1, .bg-dark-blue h2, .bg-dark-blue .h2, .bg-dark-blue h3, .bg-dark-blue .h3, .bg-dark-blue h5, .bg-dark-blue .h5 {
+    @apply text-bright-green;
+}
+
+.bg-dark-blue p, .bg-dark-blue h4, .bg-dark-blue .h4 {
+    @apply text-white;
+}
+
+input, textarea {
+    @apply border rounded border-gray-300 px-4 py-2 w-full;
+}
+
+input[type="submit"] {
+    @apply cursor-pointer;
+}
+
+form br {
+    @apply hidden h-0;
+}
+
+html.sr .reveal--fade-in {
+    visibility: hidden;
+}
+
+.page-id-70 .three-col-icon-text img.h-16 {
+    @apply h-32;
+}
+
+@screen sm {
+    .pl--container {
+        padding-left: calc(50vw - 320px);
+    }
+    
+    .pr--container {
+        padding-right: calc(50vw - 320px);
+    }
+    
+}
+
+@screen md {
+    .pl--container {
+        padding-left: calc(50vw - 384px);
+    }
+    
+    .pr--container {
+        padding-right: calc(50vw - 384px);
+    }
+}
+
+@screen lg {
+    .pl--container {
+        padding-left: calc(50vw - 512px);
+    }
+    
+    .pr--container {
+        padding-right: calc(50vw - 512px);
+    }
+}
+
+@screen xl {
+    .pl--container {
+        padding-left: calc(50vw - 640px);
+    }
+    
+    .pr--container {
+        padding-right: calc(50vw - 640px);
+    }
+}
+
+@screen 2xl {
+    .pl--container {
+        padding-left: calc(50vw - 768px);
+    }
+    
+    .pr--container {
+        padding-right: calc(50vw - 768px);
+    }
+}

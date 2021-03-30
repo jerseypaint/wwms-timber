@@ -1,0 +1,20 @@
+<section class="p-0">
+    <div class="lg:flex items-center">
+        <div class="w-full lg:pr-4 xl:pr-16">
+            <div class="container section pl--container">
+                <div class="reveal--fade-in">
+                    {{ section.text }}
+                </div>
+                
+            </div>
+        </div>
+        <div class="w-full bg-brand-blue lg:pl-4 xl:pl-16">
+            <div class="container section pr--container h-full flex flex-col justify-center min-h-60vh">
+                <div class="text-4xl text-white lg:max-w-md reveal--fade-in">
+                    {{ section.cta.text }}
+                </div>
+                <div><a class="button button--dark reveal--fade-in" href="{{ section.cta.button.url }}">{{ section.cta.button.title }}</a></div>  
+            </div>
+        </div>
+    </div>
+</section>

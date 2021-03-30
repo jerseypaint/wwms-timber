@@ -1,0 +1,19 @@
+<section>
+    <div class="lg:flex">
+        <div class="w-full lg:pr-4 xl:pr-16">
+            <div class="container pl--container">
+                <div class="reveal--fade-in">
+                    {{ section.text }}
+                </div>
+                
+            </div>
+        </div>
+        <div class="w-full lg:pl-4 xl:pl-16">
+            <div class="container pr--container">
+                <div class="reveal--fade-in">
+                    {{ section.form_shortcode|shortcodes }}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -7,39 +7,51 @@
 {% endblock %}
 
 	<body class="{{body_class}}" data-template="base.twig">
-		<a class="skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
-		<header class="header" >
+		<a class="invisible h-0 w-0 absolute left-0 skip-link screen-reader-text" href="#content">{{ _e( 'Skip to content') }}</a>
+		<header class="header relative" >
 			{% block header %}
-				<div class="wrapper">
-					<h1 class="hdr-logo" role="banner">
-						<a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a>
-					</h1>
-					<nav id="nav-main" class="nav-main" role="navigation">
-						{% include "menu.twig" with {'items': menu.get_items} %}
-					</nav><!-- #nav -->
+			<div class="bg-dark-blue text-white font-bold uppercase">
+				<div class="container text-right py-1 text-base">
+					<p class="mb-0"><a class="hover:text-white no-underline" href="{{ options.business_information.email.url }}"><i class="fas fa-envelope mr-2 text-bright-green"></i>{{ options.business_information.email.title }}</a><span class="hidden md:inline-block mx-2">|</span><a class="block md:inline-block hover:text-white no-underline" href="{{ options.business_information.phone.url }}"><i class="fas fa-phone-alt mr-2 text-bright-green"></i>{{ options.business_information.phone.title }}</a></p>
 				</div>
+			</div>
+				<div class="container py-4 mx-auto flex justify-between items-center">
+					{% if options.header_logo %}
+						<div><a class="hdr-logo-link" href="{{site.url}}" rel="home"><img class="w-72" src="{{ Image(options.header_logo).src }}" alt="World Wide Merchant Services logo"></a></div>
+					{% else %}
+						<div><a class="hdr-logo-link" href="{{site.url}}" rel="home">{{site.name}}</a></div>
+					{% endif %}
+					<nav id="nav-main" class="nav-main hidden xl:block" role="navigation">
+						{% include "menu.twig" with {'items': primary_menu.get_items, 'location': 'main'} %}
+					</nav><!-- #nav -->
+					<div class="xl:hidden">
+						<button id="mobile-nav-toggle" class="" type="button">
+							<img src="{{theme.path}}/static/menu.svg" alt="">
+						</button>
+					</div>
+				</div>
+				<nav id="nav-mobile" class="nav-mobile xl:hidden absolute left-0 top-full transition-transform transform -translate-x-full bg-white z-50" role="navigation">
+					{% include "menu.twig" with {'items': primary_menu.get_items, 'location': 'mobile'} %}
+				</nav><!-- #nav -->
 			{% endblock %}
 		</header>
 
-		<section id="content" role="main" class="content-wrapper">
-			{% if title %}<h1>{{title}}</h1>{% endif %}
+		<main id="content" role="main">
 			<div class="wrapper {{sidebar_class}}">
 				{% block content %}
 					Sorry, no content
 				{% endblock %}
 			</div>
-			{% if sidebar %}
-				<aside class="layout-sidebar">
-					{{sidebar}}
-				</aside>
-			{% endif %}
-		</section>
+		</main>
 
 		{% block footer %}
 			<footer id="footer">
 				{% include 'footer.twig' %}
 			</footer>
 			{{ function('wp_footer') }}
+			 <script src="https://kit.fontawesome.com/bef211563b.js" crossorigin="anonymous"></script>
+			 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+			 <script src="{{ site.theme.link }}/static/site.js"></script>
 		{% endblock %}
 	</body>
 </html>

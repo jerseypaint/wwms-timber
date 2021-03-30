@@ -1,1 +1,31 @@
-Copyright {{"now"|date('Y')}}
+
+<div class="section bg-dark-blue text-white" style="padding-bottom:1rem;">
+    <div class="container">
+        <div class="lg:grid grid-cols-4">
+            <div>
+                <img src="{{ Image(options.footer_logo).src }}" alt="World Wide Merchant Services Logo" class="w-64">
+            </div>
+            <div class="my-4 lg:my-0">
+                <h3 class="text-lg">How We Help Small Businesses</h3>
+                <nav id="nav-footer" role="navigation">
+					{% include "menu.twig" with {'items': footer_menu.get_items} %}
+				</nav><!-- #nav -->
+            </div>
+            <div class="col-start-4">
+                <div class="flex">
+                    {% for badge in options.badges %}
+                        <img class="w-24 mr-2" src="{{ Image(badge.image).src }}" alt="{{ Image(badge).alt }}">
+                    {% endfor %}
+                </div>
+                <div class="mt-4">
+                    <p class="mb-2 text-base">Call: <a href="{{ options.business_information.phone.url }}">{{ options.business_information.phone.title }}</a></p>
+                    <p class="text-base">Email: <a href="{{ options.business_information.email.url }}">{{ options.business_information.email.title }}</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center text-sm mt-12">
+            <div class="">{{ options.copyright }}</div>
+            <div> © 2011 - {{"now"|date('Y')}} World Wide Merchant Services.</dvi>
+        </div>
+    </div>
+</div>

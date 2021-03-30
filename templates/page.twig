@@ -2,13 +2,35 @@
 
 {% block content %}
 	<div class="content-wrapper">
-		<article class="post-type-{{post.post_type}}" id="post-{{post.ID}}">
-			<section class="article-content">
-				<h1 class="article-h1">{{post.title}}</h1>
-				<div class="article-body">
-					{{post.content}}
-				</div>
-			</section>
-		</article>
+		{% include "partial/page-header.twig" %}
+		{% for section in post.meta('sections') %}
+			{% if section.acf_fc_layout == 'basic_content' %}
+				{% include 'partial/basic-content.twig' %}
+
+			{% elseif section.acf_fc_layout == 'cta_banner' %}
+				{% include 'partial/cta-banner.twig' %}
+
+			{% elseif section.acf_fc_layout == 'two_column_form_and_text' %}
+				{% include 'partial/two-col-form-text.twig' %}
+
+			{% elseif section.acf_fc_layout == 'two_column_image_and_text' %}
+				{% include 'partial/two-col-image-text.twig' %}
+
+			{% elseif section.acf_fc_layout == 'two_column_cta_and_text' %}
+				{% include 'partial/two-col-cta-text.twig' %}
+
+			{% elseif section.acf_fc_layout == 'two_column_repeating_image_and_text' %}
+				{% include 'partial/two-col-repeating-image-text.twig' %}
+
+			{% elseif section.acf_fc_layout == 'three_column_icons_and_text' %}
+				{% include 'partial/three-col-icons-text.twig' %}
+
+			{% elseif section.acf_fc_layout == 'logo_banner' %}
+				{% include 'partial/logo-banner.twig' %}
+
+			{% elseif section.acf_fc_layout == 'four_column_text' %}
+				{% include 'partial/four-col-text.twig' %}
+			{% endif %}
+		{% endfor %}
 	</div><!-- /content-wrapper -->
 {% endblock %}

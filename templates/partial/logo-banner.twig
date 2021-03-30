@@ -1,0 +1,11 @@
+<section>
+    <div class="container">
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+            {% for  image in section.gallery %}
+                <div class="mx-auto my-8 reveal--fade-in">
+                    <img class="h-12" src="{{ Image(image).src }}"  alt="{{image.alt }}" srcset="{{ image.srcset }}" sizes="{{ image.img_sizes }}" />
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>

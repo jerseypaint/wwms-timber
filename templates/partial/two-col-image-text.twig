@@ -1,0 +1,29 @@
+{% set flex_direction = 'flex-row' %}
+{% set padding_container = 'pr--container lg:pl-8 xl:pl-16' %}
+
+{% if section.image_position == 'right' %}
+    {% set flex_direction = 'flex-row-reverse' %}
+    {% set padding_container = 'pl--container lg:pr-8 xl:pr-16' %}
+{% endif %}
+
+<section class="p-0">
+    <div class="lg:flex {{ flex_direction }}">
+        <div class="relative flex-1 overflow-hidden">
+            <div class="block lg:absolute top-0 left-0 w-full h-full min-h-60vh">
+                <img class="absolute w-full h-full object-cover" src="{{ Image(section.image).src }}"  alt="{{ section.image.alt }}" srcset="{{ section.image.srcset }}" sizes="{{ section.image.img_sizes }}" />
+            </div>
+        </div>
+        <div class="section {{ padding_container }} lg:w-1/2 flex flex-col justify-center bg-{{ section.background }}">
+            <div class="container">
+                <div>
+                    <div class="reveal--fade-in">
+                        {{ section.text }}
+                    </div>
+                    {% if section.button %}
+                        <a class="button reveal--fade-in" href="{{ section.button.url }}">{{ section.button.title }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

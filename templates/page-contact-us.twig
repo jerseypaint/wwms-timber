@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block content %}
+	<div class="content-wrapper">
+		{% include "partial/page-header.twig" %}
+        <section>
+            <div class="container">
+                <div class="lg:flex">
+                    <div class="flex-1">
+                        <h2>Contact Information</h2>
+                        <p>Email: <a href="{{ options.business_information.email.url }}">{{ options.business_information.email.title }}</a></p>
+                        <p class="mt-2">Phone: <a href="{{ options.business_information.phone.url }}">{{ options.business_information.phone.title }}</a></p>
+                    </div>
+                    <div class="flex-1">
+                        <h2>Send Us A Message</h2>
+                        {{post.contact_form_shortcode|shortcodes}}
+                    </div>
+                </div>
+            </div>
+        </section>
+	</div><!-- /content-wrapper -->
+{% endblock %}

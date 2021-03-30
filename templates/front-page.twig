@@ -1,0 +1,48 @@
+{% extends "base.twig" %}
+
+{% block content %}
+    <div class="content-wrapper"></div>
+        <section class="relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-full">
+                <img class="h-full w-full object-cover" src="{{ Image(post.meta('background_image')).src }}"  alt="{{ post.meta('background_image').alt }}" srcset="{{ post.meta('background_image').srcset }}" sizes="{{ post.meta('background_image').img_sizes }}" />
+            </div>
+            <div class="absolute top-0 left-0 w-full h-full bg-black opacity-20"></div>
+            <div class="container relative">
+                <div class="max-w-4xl min-h-60vh flex flex-col justify-center">
+                    <h1 class="text-white reveal--fade-in">{{ post.meta('heading') }}</h1>
+                    <div class="reveal--fade-in">
+                        <a class="button" href="{{ post.meta('button').url }}">{{ post.meta('button').title }}</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+        {% for section in post.meta('sections') %}
+            {% if section.acf_fc_layout == 'basic_content' %}
+                {% include 'partial/basic-content.twig' %}
+
+            {% elseif section.acf_fc_layout == 'cta_banner' %}
+                {% include 'partial/cta-banner.twig' %}
+
+            {% elseif section.acf_fc_layout == 'text_and_form' %}
+                
+            {% elseif section.acf_fc_layout == 'two_column_image_and_text' %}
+                {% include 'partial/two-col-image-text.twig' %}
+
+            {% elseif section.acf_fc_layout == 'two_column_cta_and_text' %}
+                {% include 'partial/two-col-cta-text.twig' %}
+
+            {% elseif section.acf_fc_layout == 'two_column_repeating_image_and_text' %}
+                {% include 'partial/two-col-repeating-image-text.twig' %}
+
+            {% elseif section.acf_fc_layout == 'three_column_icons_and_text' %}
+                {% include 'partial/three-col-icons-text.twig' %}
+
+            {% elseif section.acf_fc_layout == 'logo_banner' %}
+                {% include 'partial/logo-banner.twig' %}
+
+            {% elseif section.acf_fc_layout == 'team_profiles' %}
+        
+            {% endif %}
+        {% endfor %}
+    </div><!-- /content-wrapper -->
+{% endblock %}

@@ -1,0 +1,10 @@
+<section class="bg-{{ section.background }} text-{{ section.text_alignment }}">
+    <div class="container">
+        <div class="reveal--fade-in">
+            {{ section.text }}
+        </div>
+        {% if section.button %}
+            <a class="button reveal--fade-in" href="{{ section.button.url }}">{{ section.button.title }}</a>
+        {% endif %}
+    </div>
+</section>

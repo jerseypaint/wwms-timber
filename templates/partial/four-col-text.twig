@@ -1,0 +1,13 @@
+<section class="bg-dark-blue">
+    <div class="container">
+        <h2 class="text-center mb-8 reveal--fade-in">{{ section.heading }}</h2>
+        <div class="md:grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+            {% for col in section.columns %}
+                <div class="reveal--fade-in">
+                    <h3>{{ col.heading }}</h3>
+                    <p>{{ col.text }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
